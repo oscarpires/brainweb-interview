@@ -1,8 +1,15 @@
 package br.com.brainweb.interview.core.features.hero;
 
-import br.com.brainweb.interview.model.enums.Race;
-import br.com.brainweb.interview.model.request.CreateHeroRequest;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.header;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+import java.util.Random;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,13 +19,10 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 
-import java.util.UUID;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.*;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.header;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import br.com.brainweb.interview.model.enums.Race;
+import br.com.brainweb.interview.model.request.CreateHeroRequest;
 
 @WebMvcTest(HeroController.class)
 class HeroControllerTest {
@@ -34,7 +38,9 @@ class HeroControllerTest {
 
     @BeforeEach
     public void initTest() {
-        when(heroService.create(any())).thenReturn(UUID.randomUUID());
+    	Random r= new Random();
+    	
+        when(heroService.create(any())).thenReturn(r.nextInt());
     }
 
     @Test

@@ -1,5 +1,6 @@
 package br.com.brainweb.interview.model.request;
 
+import br.com.brainweb.interview.model.Hero;
 import br.com.brainweb.interview.model.enums.Race;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

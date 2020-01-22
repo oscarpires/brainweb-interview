@@ -5,7 +5,6 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 import static org.springframework.http.ResponseEntity.created;
 
 import java.net.URI;
-import java.util.UUID;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -26,7 +25,7 @@ public class HeroController {
 
 	@PostMapping(consumes = APPLICATION_JSON_VALUE)
 	public ResponseEntity<Void> create(@Validated @RequestBody CreateHeroRequest createHeroRequest) {
-		final UUID id = heroService.create(createHeroRequest);
+		final Integer id = heroService.create(createHeroRequest);
 		return created(URI.create(format("/api/v1/heroes/%s", id))).build();
 	}
 }

@@ -82,7 +82,23 @@
 				<artifactId>maven-clean-plugin</artifactId>
 			</dependency>
 
+			<!-- https://mvnrepository.com/artifact/org.apache.commons/lang3 -->
+			<dependency>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>lang3</artifactId>
+				<version>3.1.0</version>
+			</dependency>
 
+
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-test</artifactId>
+				<scope>test</scope>
+			</dependency>
 
 		</dependencies>
 	</dependencyManagement>
@@ -114,13 +130,8 @@
 			<plugin>
 				<artifactId>maven-clean-plugin</artifactId>
 				<executions>
-					<!-- <execution>
-						<id>auto-clean</id>
-						<phase>initialize</phase>
-						<goals>
-							<goal>clean</goal>
-						</goals>
-					</execution> -->
+					<!-- <execution> <id>auto-clean</id> <phase>initialize</phase> <goals> 
+						<goal>clean</goal> </goals> </execution> -->
 				</executions>
 			</plugin>
 			<plugin>
@@ -151,7 +162,7 @@
 									<version>[3.6.0,)</version>
 								</requireMavenVersion>
 								<requireJavaVersion>
-									<version>11</version>
+									<version>1.8</version>
 								</requireJavaVersion>
 								<requireReleaseDeps>
 									<onlyWhenRelease>true</onlyWhenRelease>

@@ -1,91 +1,28 @@
 package br.com.brainweb.interview.model;
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
 import br.com.brainweb.interview.model.enums.Race;
-import br.com.brainweb.interview.model.request.CreateHeroRequest;
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
-
-import java.time.Instant;
-import java.util.UUID;
-
-import static lombok.AccessLevel.PRIVATE;
+import lombok.Getter;
+import lombok.Setter;
 
 @Data
 @Builder
-@AllArgsConstructor
-@NoArgsConstructor(access = PRIVATE)
+@Getter
+@Setter
 public class Hero {
 
-	private UUID id;
+	private Integer id;
 	private String name;
 	private Race race;
-	private UUID powerStatsId;
-	private Instant createdAt;
-	private Instant updatedAt;
-	private boolean enabled;
+	private Integer powerStatsId;
 
-	public Hero(CreateHeroRequest createHeroRequest, UUID powerStatsId) {
-		this.name = createHeroRequest.getName();
-		this.race = createHeroRequest.getRace();
-		this.powerStatsId = powerStatsId;
-	}
-
-	public UUID getId() {
-		return id;
-	}
-
-	public void setId(UUID id) {
-		this.id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public Race getRace() {
-		return race;
-	}
-
-	public void setRace(Race race) {
-		this.race = race;
-	}
-
-	public UUID getPowerStatsId() {
-		return powerStatsId;
-	}
-
-	public void setPowerStatsId(UUID powerStatsId) {
-		this.powerStatsId = powerStatsId;
-	}
-
-	public Instant getCreatedAt() {
-		return createdAt;
-	}
-
-	public void setCreatedAt(Instant createdAt) {
-		this.createdAt = createdAt;
-	}
-
-	public Instant getUpdatedAt() {
-		return updatedAt;
-	}
-
-	public void setUpdatedAt(Instant updatedAt) {
-		this.updatedAt = updatedAt;
-	}
-
-	public boolean isEnabled() {
-		return enabled;
-	}
-
-	public void setEnabled(boolean enabled) {
-		this.enabled = enabled;
+	@Override
+	public String toString() {
+		return ToStringBuilder.reflectionToString(this, ToStringStyle.SHORT_PREFIX_STYLE);
 	}
 
 }

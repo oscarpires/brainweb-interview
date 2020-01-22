@@ -7,14 +7,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
 import javax.annotation.PostConstruct;
 import javax.sql.DataSource;
 
+//@RequiredArgsConstructor
 @Repository
-@RequiredArgsConstructor
 public class HeroRepository {
 
 	@Autowired
@@ -31,8 +32,10 @@ public class HeroRepository {
 	}
 
 	UUID create(Hero hero) {
-		final Map<String, Object> params = Map.of("name", hero.getName(), "race", hero.getRace().name(), "powerStatsId",
-				hero.getPowerStatsId());
+		final Map<String, Object> params = new HashMap<String, Object>();
+		params.put("name", hero.getName());
+		params.put("race", hero.getRace().name());
+		params.put("powerStatsId", hero.getPowerStatsId());
 
 		return namedParameterJdbcTemplate.queryForObject(CREATE_HERO_QUERY, params, UUID.class);
 	}
