@@ -1,19 +1,21 @@
 package br.com.brainweb.interview.model.request;
 
-import br.com.brainweb.interview.model.Hero;
-import br.com.brainweb.interview.model.enums.Race;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.hibernate.validator.constraints.Length;
+import static lombok.AccessLevel.PRIVATE;
+
+import java.util.Date;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-import static lombok.AccessLevel.PRIVATE;
+import org.hibernate.validator.constraints.Length;
+
+import br.com.brainweb.interview.model.enums.Race;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @Builder
@@ -50,6 +52,13 @@ public class CreateHeroRequest {
 	@NotNull(message = "message.powerstats.intelligence.mandatory")
 	int intelligence;
 
+	@NotNull(message = "message.enabled.mandatory")
+	boolean enabled;
+
+	Date created_at;
+
+	Date updated_at;
+
 	public String getName() {
 		return name;
 	}
@@ -58,7 +67,7 @@ public class CreateHeroRequest {
 		this.name = name;
 	}
 
-	public Race getRace() {
+	public Race getE() {
 		return race;
 	}
 
@@ -116,7 +125,7 @@ public class CreateHeroRequest {
 		newHero.setDexterity(i);
 		return newHero;
 	}
-	
+
 	public CreateHeroRequest strength(int i) {
 		newHero.setStrength(i);
 		return newHero;

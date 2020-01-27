@@ -1,5 +1,7 @@
 package br.com.brainweb.interview.core.features.hero;
 
+import java.util.UUID;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,8 +17,10 @@ public class HeroService {
 	// was UUID
 	
 	@Transactional
-	public Integer create(CreateHeroRequest createHeroRequest) {
-		Hero hero = Hero.builder().build();
+	public UUID create(CreateHeroRequest createHeroRequest) {
+		System.out.println("* create Hero via Build");
+		
+		Hero hero = new Hero();
 		
 		return hero.getId();
 		//return heroRepository.create(createHeroRequest);

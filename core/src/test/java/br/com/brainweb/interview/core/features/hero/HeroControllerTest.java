@@ -9,6 +9,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import java.util.Random;
+import java.util.UUID;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -27,46 +28,42 @@ import br.com.brainweb.interview.model.request.CreateHeroRequest;
 @WebMvcTest(HeroController.class)
 class HeroControllerTest {
 
-    @Autowired
-    private MockMvc mockMvc;
+	@Autowired
+	private MockMvc mockMvc;
 
-    @Autowired
-    private ObjectMapper objectMapper;
+	@Autowired
+	private ObjectMapper objectMapper;
 
-    @MockBean
-    private HeroService heroService;
+	@MockBean
+	private HeroService heroService;
 
-    @BeforeEach
-    public void initTest() {
-    	Random r= new Random();
-    	
-        when(heroService.create(any())).thenReturn(r.nextInt());
-    }
+	@BeforeEach
+	public void initTest() {
 
-    @Test
-    void createAHeroWithAllRequiredArguments() throws Exception {
-        //given
-        // Convert the hero request into a string JSON format stub.
-        final String body = objectMapper.writeValueAsString(createHeroRequest());
+		// when(heroService.create(any())).thenReturn(r.nextInt());
 
-        //when
-        final ResultActions resultActions = mockMvc.perform(post("/api/v1/heroes")
-            .contentType(MediaType.APPLICATION_JSON)
-            .content(body));
+		when(heroService.create(any())).thenReturn(UUID.randomUUID());
+	}
 
-        //then
-        resultActions.andExpect(status().isCreated()).andExpect(header().exists("Location"));
-        verify(heroService, times(1)).create(any());
-    }
+	@Test
+	void createAHeroWithAllRequiredArguments() throws Exception {
+		// given
+		// Convert the hero request into a string JSON format stub.
+		final String body = objectMapper.writeValueAsString(createHeroRequest());
 
-    private CreateHeroRequest createHeroRequest() {
-        return CreateHeroRequest.builder()
-            .name("Batman")
-            .agility(5)
-            .dexterity(8)
-            .strength(6)
-            .intelligence(10)
-            .race(Race.HUMAN)
-            .build();
-    }
+		// when
+		final ResultActions resultActions = mockMvc
+				.perform(post("/api/v1/heroes").contentType(MediaType.APPLICATION_JSON).content(body));
+		System.out.println("**received /heroes");
+
+		// then
+		resultActions.andExpect(status().isCreated()).andExpect(header().exists("Location"));
+		verify(heroService, times(1)).create(any());
+	}
+
+	@Test
+	private CreateHeroRequest createHeroRequest() {
+		return CreateHeroRequest.builder().name("Batman").agility(5).dexterity(8).strength(6).intelligence(10)
+				.race(Race.HUMAN).build();
+	}
 }

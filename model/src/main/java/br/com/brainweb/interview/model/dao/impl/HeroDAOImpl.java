@@ -4,6 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.RowMapper;
@@ -16,13 +17,13 @@ import org.springframework.stereotype.Repository;
 
 import br.com.brainweb.interview.model.Hero;
 
-@Repository
+
 public class HeroDAOImpl {
 
-	@Autowired
+/*	@Autowired
 	private NamedParameterJdbcTemplate jdbcTemplate;
 
-	public Hero getHeroById(Integer id) {
+	public Hero getHeroById(UUID id) {
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("id", id);
 
@@ -38,7 +39,7 @@ public class HeroDAOImpl {
 
 		jdbcTemplate.update("insert into heroes(name) values(:name)", params, keyHolder);
 
-		hero.setId(keyHolder.getKey().intValue());
+		hero.setId(UUID.randomUUID());
 
 		return hero;
 	}
@@ -46,9 +47,12 @@ public class HeroDAOImpl {
 	private class HeroMapper implements RowMapper<Hero> {
 		@Override
 		public Hero mapRow(ResultSet rs, int rowNum) throws SQLException {
-			return Hero.builder().id(rs.getInt("id")).name(rs.getString("name")).build();
+			Hero hero = new Hero();
+			hero.setName(rs.getString("name"));
+			
+			return hero;
 		}
 
 	}
-
+*/
 }
