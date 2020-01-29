@@ -2,6 +2,7 @@ package br.com.brainweb.interview.core.features.hero;
 
 import java.util.UUID;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -13,7 +14,8 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class HeroService {
 
-	private final HeroRepository heroRepository = new HeroRepository();
+	@Autowired
+	private final HeroRepository heroRepository;
 	// was UUID
 	
 	@Transactional

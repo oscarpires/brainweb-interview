@@ -18,7 +18,6 @@ import br.com.brainweb.interview.model.enums.Race;
 public class Hero {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	private UUID id;
 
 	@Column

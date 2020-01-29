@@ -4,6 +4,7 @@ import br.com.brainweb.interview.model.Hero;
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -16,10 +17,12 @@ import javax.annotation.PostConstruct;
 import javax.sql.DataSource;
 
 //@RequiredArgsConstructor
-@Repository
-public class HeroRepository {
 
-	@Autowired
+public interface HeroRepository extends JpaRepository<Hero, UUID> {
+
+	
+	
+	/*@Autowired
 	private DataSource dataSource;
 
 	private static final String QUERY_HERO_ALL = " SELECT * FROM Hero ";
@@ -59,7 +62,5 @@ public class HeroRepository {
 		final Map<String, Object> params = new HashMap<String, Object>();
 
 		return template.queryForObject(QUERY_HERO_ALL, params, Hero.class);
-
-		
-	}
+	}*/
 }

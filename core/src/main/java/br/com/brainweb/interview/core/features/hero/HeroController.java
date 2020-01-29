@@ -29,8 +29,7 @@ import br.com.brainweb.interview.model.request.CreateHeroRequest;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequiredArgsConstructor
-@RequestMapping(value = "/api/v1/heroes", produces = APPLICATION_JSON_VALUE)
+@RequestMapping(value = "/api/v1/heroes")
 public class HeroController {
 
 	@Autowired
@@ -47,14 +46,14 @@ public class HeroController {
 		hero.setEnabled(true);
 		hero.setRace(createHeroRequest.getRace());
 		
-		final UUID id = heroRepository.create(hero); // .create(createHeroRequest);
+		Hero id = heroRepository.save(hero); // .create(createHeroRequest);
 
 		System.out.println("HeroId2 " + id);
 
 		return created(URI.create(format("/api/v1/heroes/%s", id))).build();
 	}
 	
-	@GetMapping("/{id}")
+//	@GetMapping("/{id}")
 	
 	@RequestMapping("/data")
 	public String data() {
@@ -68,7 +67,7 @@ public class HeroController {
 	@RequestMapping("/lista")
 	public String lista() {
 		Gson gson = new Gson();
-		Hero optional = heroRepository.findAll();
+		List<Hero> optional = heroRepository.findAll();
 
 		return gson.toJson(optional);
 	}
