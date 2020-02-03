@@ -1,7 +1,6 @@
 package br.com.brainweb.interview.model;
 
-import java.util.Date;
-import java.util.UUID;
+import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -18,32 +17,34 @@ import br.com.brainweb.interview.model.enums.Race;
 public class Hero {
 
 	@Id
-	private UUID id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long id;
 
 	@Column
 	private String name;
 
 	@Column
 	private Race race;
-	private UUID powerStatsId;
+
+	private long powerStatsId;
 	private boolean enabled;
 
 	@Column
-	private Date create_at;
+	private LocalDateTime create_at = LocalDateTime.now();
 
 	@Column
-	private Date updated_at;
+	private LocalDateTime updated_at;
 
 	@Override
 	public String toString() {
 		return ToStringBuilder.reflectionToString(this, ToStringStyle.SHORT_PREFIX_STYLE);
 	}
 
-	public UUID getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(UUID id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
@@ -63,11 +64,11 @@ public class Hero {
 		this.race = race;
 	}
 
-	public UUID getPowerStatsId() {
+	public long getPowerStatsId() {
 		return powerStatsId;
 	}
 
-	public void setPowerStatsId(UUID powerStatsId) {
+	public void setPowerStatsId(long powerStatsId) {
 		this.powerStatsId = powerStatsId;
 	}
 
@@ -79,22 +80,20 @@ public class Hero {
 		this.enabled = enabled;
 	}
 
-	public Date getCreate_at() {
+	public LocalDateTime getCreate_at() {
 		return create_at;
 	}
 
-	public void setCreate_at(Date create_at) {
+	public void setCreate_at(LocalDateTime create_at) {
 		this.create_at = create_at;
 	}
 
-	public Date getUpdated_at() {
+	public LocalDateTime getUpdated_at() {
 		return updated_at;
 	}
 
-	public void setUpdated_at(Date updated_at) {
+	public void setUpdated_at(LocalDateTime updated_at) {
 		this.updated_at = updated_at;
 	}
 
-	
-	
 }

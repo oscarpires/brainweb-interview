@@ -2,6 +2,7 @@ package br.com.brainweb.interview.model.request;
 
 import static lombok.AccessLevel.PRIVATE;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 import javax.validation.constraints.Max;
@@ -17,7 +18,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
+
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor(access = PRIVATE)
@@ -55,9 +56,9 @@ public class CreateHeroRequest {
 	@NotNull(message = "message.enabled.mandatory")
 	boolean enabled;
 
-	Date created_at;
+	LocalDateTime created_at;
 
-	Date updated_at;
+	LocalDateTime updated_at;
 
 	public String getName() {
 		return name;
@@ -67,7 +68,7 @@ public class CreateHeroRequest {
 		this.name = name;
 	}
 
-	public Race getE() {
+	public Race getRace() {
 		return race;
 	}
 
@@ -144,4 +145,30 @@ public class CreateHeroRequest {
 	public CreateHeroRequest build() {
 		return newHero;
 	}
+
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
+
+	public LocalDateTime getCreated_at() {
+		return created_at;
+	}
+
+	public void setCreated_at(LocalDateTime created_at) {
+		this.created_at = created_at;
+	}
+
+	public LocalDateTime getUpdated_at() {
+		return updated_at;
+	}
+
+	public void setUpdated_at(LocalDateTime updated_at) {
+		this.updated_at = updated_at;
+	}
+
+	
 }

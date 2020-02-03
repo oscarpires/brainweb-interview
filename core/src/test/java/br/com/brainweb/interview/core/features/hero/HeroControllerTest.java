@@ -9,7 +9,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import java.util.Random;
-import java.util.UUID;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -39,10 +38,9 @@ class HeroControllerTest {
 
 	@BeforeEach
 	public void initTest() {
-
 		// when(heroService.create(any())).thenReturn(r.nextInt());
-
-		when(heroService.create(any())).thenReturn(UUID.randomUUID());
+		//UUID.randomUUID()
+		when(heroService.create(any())).thenReturn(new Random().nextLong());
 	}
 
 	@Test
