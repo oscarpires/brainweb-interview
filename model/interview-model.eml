@@ -16,6 +16,7 @@
 		<level name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.10.0" value="project"/>
 		<level name="Maven: com.fasterxml.jackson.core:jackson-databind:2.10.0" value="project"/>
 		<level name="Maven: com.fasterxml.jackson.core:jackson-core:2.10.0" value="project"/>
+		<level name="Maven: org.apache.commons:commons-lang3:3.9" value="project"/>
 		<level name="Maven: org.apache.maven.plugins:maven-clean-plugin:3.0.0" value="project"/>
 		<level name="Maven: org.apache.maven:maven-plugin-api:3.0" value="project"/>
 		<level name="Maven: org.apache.maven:maven-model:3.0" value="project"/>

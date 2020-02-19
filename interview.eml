@@ -7,6 +7,7 @@
 	<lib name="Maven: org.springframework.boot:spring-boot-devtools:2.2.1.RELEASE" scope="RUNTIME"/>
 	<lib name="Maven: org.yaml:snakeyaml:1.25" scope="RUNTIME"/>
 	<levels>
+		<level name="lombok" value="project"/>
 		<level name="Maven: org.projectlombok:lombok:1.18.10" value="project"/>
 		<level name="Maven: org.springframework.boot:spring-boot-devtools:2.2.1.RELEASE" value="project"/>
 		<level name="Maven: org.springframework.boot:spring-boot:2.2.1.RELEASE" value="project"/>
@@ -73,6 +74,5 @@
 		<level name="Maven: org.springframework:spring-tx:5.2.1.RELEASE" value="project"/>
 		<level name="Maven: org.slf4j:slf4j-api:1.7.29" value="project"/>
 		<level name="Maven: org.springframework:spring-aspects:5.2.1.RELEASE" value="project"/>
-		<level name="lombok" value="project"/>
 	</levels>
 </component>
